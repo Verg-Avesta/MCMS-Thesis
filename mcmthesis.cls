@@ -32,7 +32,7 @@
 \MCM@opt@abstracttrue
 \newcommand{\mcmsetup}[1]{\setkeys{MCM}{#1}}
 \ProcessOptionsX\relax
-\LoadClass[a4paper, 11pt]{article}
+\LoadClass[letterpaper, 12pt]{article}
 \newcommand{\team}{Team \#\ \MCM@opt@tcn}
 \RequirePackage{fancyhdr, fancybox}
 \RequirePackage{ifthen}
@@ -78,7 +78,8 @@
     \hypersetup{dvipdfm, hidelinks}
   \fi
 \fi
-\geometry{a4paper, margin = 1.2in}
+\geometry{letterpaper, margin = 0.8in}
+\geometry{left=2.5cm,right=2.5cm,top=2cm,bottom=2cm} %%页边距
 \pagestyle{fancy}
 \fancyhf{}
 \lhead{\small\sffamily \team}
@@ -153,7 +154,7 @@
     \@keywords\par
   }
 \fi
-\newcommand{\headset}{{\the\year} \par MCM/ICM \\ Summary Sheet}
+\newcommand{\headset}{\LARGE{{\the\year} \par MCM/ICM \\ Summary Sheet}}
 \newcommand{\problem}[1]{\mcmsetup{problem = #1}}
 \def\makesheet{%
   \pagestyle{empty}%
@@ -163,28 +164,21 @@
   \begingroup
   \setlength{\parindent}{0pt}
      \begin{minipage}{0.28\linewidth}
-      For office use only\\[4pt]
-      \makebox[0.15\linewidth][l]{T1}\rule[-2pt]{0.85\linewidth}{0.5pt}\\[4pt]
-      \makebox[0.15\linewidth][l]{T2}\rule[-2pt]{0.85\linewidth}{0.5pt}\\[4pt]
-      \makebox[0.15\linewidth][l]{T3}\rule[-2pt]{0.85\linewidth}{0.5pt}\\[4pt]
-      \makebox[0.15\linewidth][l]{T4}\rule[-2pt]{0.85\linewidth}{0.5pt}
+        \centering
+        Problem Chosen\\[0.7pc]
+        {\Huge\textbf{\MCM@opt@problem}}
      \end{minipage}%
      \begin{minipage}{0.44\linewidth}
+        \centering
+        \textbf{\headset}%
+     \end{minipage}%
+     \begin{minipage}{0.28\linewidth}
       \centering
       Team Control Number\\[0.7pc]
       {\Huge\textbf{\MCM@opt@tcn}}\\[1.8pc]
-      Problem Chosen\\[0.7pc]
-      {\Huge\textbf{\MCM@opt@problem}}
-     \end{minipage}%
-     \begin{minipage}{0.28\linewidth}
-      For office use only\\[4pt]
-      \makebox[0.15\linewidth][l]{F1}\rule[-2pt]{0.85\linewidth}{0.5pt}\\[4pt]
-      \makebox[0.15\linewidth][l]{F2}\rule[-2pt]{0.85\linewidth}{0.5pt}\\[4pt]
-      \makebox[0.15\linewidth][l]{F3}\rule[-2pt]{0.85\linewidth}{0.5pt}\\[4pt]
-      \makebox[0.15\linewidth][l]{F4}\rule[-2pt]{0.85\linewidth}{0.5pt}
      \end{minipage}\par
   \rule{\linewidth}{0.5pt}\par
-  \textbf{\headset}%
+  
   \par
   \endgroup
   \vskip 10pt%
