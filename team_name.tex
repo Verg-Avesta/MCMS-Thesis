@@ -69,6 +69,7 @@
 		\centering
 		\includegraphics[width=0.75\textwidth]{figures/football.jpg}
 		\caption{A Football Game~\cite{Wiki_Football}}
+		\label{fig:football}
 	\end{figure}
 
 	As we all know, football is a sport that requires intense teamwork.  For it can show the importance of teamwork spirit more than superb personal ability.  Passing, as an offensive means that requires the cooperation of various players to play the biggest role, is just an important manifestation of the team spirit of football.  Therefore, to study the important role of teamwork in football, you can start by studying the passing network in football.
@@ -82,6 +83,7 @@
 	Our model is based on these following basic assumptions:
 	\begin{enumerate}
 		\item The average position of a player over a period of time is equivalent to the average of the position of the player in all events that occurred during that period.
+		\item We consider a dyadic configuration tight if players in this dyadic configuration continuously pass each other far more often than they pass other players.  The same is true for triadic configurations.
 	\end{enumerate}
 \section{Nomenclature}
 	Symbols that our model mainly uses are listed in Table \ref{tab:Nomen}.  Other symbols that are used only once will be described in the following chapters.
@@ -124,9 +126,22 @@
 	Now we can easily find that $\textbf{B}$ is equal to its transpose matrix.  Hence $\textbf{B}$ is a symmetric matrix.
 
 	After getting $\textbf{B}$, we can continue to study the undirected graph $G$.  From the previous definition of the adjacency matrix, it can be seen that the nodes in this undirected graph represent the Huskies players, and the edges represent interactions between players.  For quantitative research, we define the weight of node $i$ in the undirected graph $G$ as the sum of the number of passes and catches by player $i$, and the weight of edge $E (i, j)$ is defined as the sum of the number of passes from player $i$ to player $j$ and the number of passes from player $j$ to player $i$.
-
-	In order to have an intuitive understanding of the football passing network, we can draw this undirected graph on a schematic diagram of a football field.  Among them, circles represent nodes, and straight lines connecting circles represent edges.  For a node, the larger its size and the darker its color, the greater the weight of the node.  For an edge, the thicker its thickness and the darker its color, the greater the weight of the edge.  In addition, in order to gain a clear understanding of the formation and other factors of this team, we plot the nodes on the represented player's the average position in the studied period.  In this way, we obtain a schematic diagram which can intuitively reflect the football passing network.  There is an example below.
+	
+	In order to have an intuitive understanding of the football passing network, we can draw this undirected graph on a schematic diagram of a football field.  Among them, circles represent nodes, and straight lines connecting circles represent edges.  For a node, the larger its size and the darker its color, the greater the weight of the node.  For an edge, the thicker its thickness and the darker its color, the greater the weight of the edge.  In addition, in order to gain a clear understanding of the formation and other factors of this team, we plot the nodes on the represented player's the average position in the studied period.  In this way, we obtain a schematic diagram which can intuitively reflect the football passing network.  Figure \ref{fig:playground} is an example by us.
+	
+	\begin{figure}[h]
+		\centering
+		\includegraphics[width=\textwidth]{figures/playground.png}
+		\caption{An Example of the Football Passing Network}
+		\label{fig:playground}
+	\end{figure}
 \subsection{Identify Network Patterns}
+	After establishing the football passing network, we will use this model to identify some special patterns of Huskies' network.  In the following chapters, we will investigate Huskies' continuous football passing chain, network centroid and advance ratio to identify its patterns on multiple scales. 
+\subsubsection{Continuous Football Passing Chain}
+	Just as we have stated in assumption 2, when players in a dyadic or triadic configuration continuously pass each other far more frequently than they do with other players in the team, we consider this configuration tight.  Therefore, when investigating the tightness of such configurations, we need to study the behavior of continuous passing between players.  For this reason, we construct a continuous football passing chain as a tool to study this behavior according to the football passing network.
+
+	In football games, passing is a very continuous activity.  It can be said that before occasion like shooting, out of bounds or the football is intercepted by the opposing player occurs, the passing can build a transitive binary relationship between our players.  Therefore, we can use this characteristic to construct a continuous football passing chain, which is continuous and transitive.  The general construction method is: According to the data in passingevents, we record the process of continuous passing of football between Huskies players with a linked chain.  This chain will continue until disruptive occasions such as shooting, out of bounds or the football is intercepted by the opponent occur.  In this way, we get a chain that records the continuous passing of the Husky players.
+\subsubsection{Network Centroid And Advance Ratio}
 \subsection{Identify Teamwork Indicators}
 \section{Implementation}
 \section{Structural Strategies}
