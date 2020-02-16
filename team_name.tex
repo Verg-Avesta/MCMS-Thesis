@@ -90,13 +90,14 @@
     	\caption{Nomenclature}
 		\label{tab:Nomen}
 		\begin{tabular}{c c}
-			\hline
-					Symbol & Definition\\
+			\hline	
+				Symbol & Definition\\
 			\hline
 				$\textbf{A}$ & Football passing matrix\\
 				$\textbf{B}$ & Adjacency matrix\\
-				$a_{i}$ & The \emph{i}th player in Huskies\\
-				$a_{ij}$ & Number of passes from player $i$ to player $j$\\
+				$G$ & Undirected graph representing the football passing network\\
+				$p_{i}$ & The \emph{i}th player in Huskies\\
+				$p_{ij}$ & Number of passes from player $i$ to player $j$\\
 				$\langle$$X$$\rangle$ & The x-coordinate of the network centroid\\
 				$\langle$$Y$$\rangle$ & The y-coordinate of the network centroid\\
 				$D$ & The dispersion of the position of the players around the network centroid\\
@@ -107,7 +108,24 @@
 \section{The Basic Model}
 	In this section we will discuss our network model in detail.  First of all, we will begin with the establishment of our network model.  Then we will use our model to identify some patterns of the network.  Finally, we will also investigate the indicators of teamwork. 
 \subsection{Build of the Network}
-	First, we define the Huskies' passing matrix A.
+	First of all, we define Huskies' football passing matrix $\textbf{A}$.  When the number of players who have played is $n$, $\textbf{A}$ is a square matrix of $n \times n$, which is defined as:
+	\begin{equation}\label{eq:Mat_A}
+		a_{ij} =
+		\begin{cases}
+			p_{ij}& \text{$i \neq j$}\\
+			0& \text{$i = j$}
+		\end{cases}
+	\end{equation}
+	In this way, we obtain an asymmetric square matrix of order $n$.  Next, on this basis, we try to build an undirected graph model to describe the team's passing network.  But as we have mentioned before, the adjacency matrix of an undirected graph is a symmetric matrix, while the football passing matrix $\textbf{A}$ we constructed is asymmetric.  Therefore, we need to construct a symmetric adjacency matrix $\textbf{B}$ using this asymmetric passing matrix $\textbf{A}$.  To achieve this, we define $\textbf{B}$ as the sum of $\textbf{A}$ and the transposed matrix of $\textbf{A}$, that is to say, for each element $b_{ij}$ in B, the following formula is satisfied:
+	\begin{equation}
+		\label{eq:Mat_B}
+		b_{ij} = a_{ij} + a_{ji}
+	\end{equation}
+	Now we can easily find that $\textbf{B}$ is equal to its transpose matrix.  Hence $\textbf{B}$ is a symmetric matrix.
+
+	After getting $\textbf{B}$, we can continue to study the undirected graph $G$.  From the previous definition of the adjacency matrix, it can be seen that the nodes in this undirected graph represent the Huskies players, and the edges represent interactions between players.  For quantitative research, we define the weight of node $i$ in the undirected graph $G$ as the sum of the number of passes and catches by player $i$, and the weight of edge $E (i, j)$ is defined as the sum of the number of passes from player $i$ to player $j$ and the number of passes from player $j$ to player $i$.
+
+	In order to have an intuitive understanding of the football passing network, we can draw this undirected graph on a schematic diagram of a football field.  Among them, circles represent nodes, and straight lines connecting circles represent edges.  For a node, the larger its size and the darker its color, the greater the weight of the node.  For an edge, the thicker its thickness and the darker its color, the greater the weight of the edge.  In addition, in order to gain a clear understanding of the formation and other factors of this team, we plot the nodes on the represented player's the average position in the studied period.  In this way, we obtain a schematic diagram which can intuitively reflect the football passing network.  There is an example below.
 \subsection{Identify Network Patterns}
 \subsection{Identify Teamwork Indicators}
 \section{Implementation}
