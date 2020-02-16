@@ -1,0 +1,16 @@
+\contentsline {section}{\numberline {1}Introduction}{2}{section.1}
+\contentsline {subsection}{\numberline {1.1}Problem Background}{2}{subsection.1.1}
+\contentsline {subsection}{\numberline {1.2}Our Work}{2}{subsection.1.2}
+\contentsline {section}{\numberline {2}Assumptions}{3}{section.2}
+\contentsline {section}{\numberline {3}Nomenclature}{3}{section.3}
+\contentsline {section}{\numberline {4}The Basic Model}{3}{section.4}
+\contentsline {subsection}{\numberline {4.1}Build of the Network}{4}{subsection.4.1}
+\contentsline {subsection}{\numberline {4.2}Identify Network Patterns}{4}{subsection.4.2}
+\contentsline {subsection}{\numberline {4.3}Identify Teamwork Indicators}{4}{subsection.4.3}
+\contentsline {section}{\numberline {5}Implementation}{4}{section.5}
+\contentsline {section}{\numberline {6}Structural Strategies}{4}{section.6}
+\contentsline {section}{\numberline {7}Model Analysis}{4}{section.7}
+\contentsline {subsection}{\numberline {7.1}Sensitivity Analysis}{4}{subsection.7.1}
+\contentsline {subsection}{\numberline {7.2}Strengths and Weakness}{4}{subsection.7.2}
+\contentsline {section}{\numberline {8}Conclusion}{4}{section.8}
+\contentsline {section}{Appendices}{5}{section*.4}
