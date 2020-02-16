@@ -103,6 +103,7 @@
 				$\langle$$X$$\rangle$ & The x-coordinate of the network centroid\\
 				$\langle$$Y$$\rangle$ & The y-coordinate of the network centroid\\
 				$D$ & The dispersion of the position of the players around the network centroid\\
+				$r$ & The advance ratio\\
 			\hline
    	 	\end{tabular}
 	\end{table}
@@ -140,10 +141,22 @@
 \subsubsection{Continuous Football Passing Chain}
 	Just as we have stated in assumption 2, when players in a dyadic or triadic configuration continuously pass each other far more frequently than they do with other players in the team, we consider this configuration tight.  Therefore, when investigating the tightness of such configurations, we need to study the behavior of continuous passing between players.  For this reason, we construct a continuous football passing chain as a tool to study this behavior according to the football passing network.
 
-	In football games, passing is a very continuous activity.  It can be said that before occasion like shooting, out of bounds or the football is intercepted by the opposing player occurs, the passing can build a transitive binary relationship between our players.  Therefore, we can use this characteristic to construct a continuous football passing chain, which is continuous and transitive.  The general construction method is: According to the data in passingevents, we record the process of continuous passing of football between Huskies players with a linked chain.  This chain will continue until disruptive occasions such as shooting, out of bounds or the football is intercepted by the opponent occur.  In this way, we get a chain that records the continuous passing of the Husky players.
+	In football games, passing is a very continuous activity.  It can be said that before occasion like shooting, out of bounds or the football is intercepted by the opposing player occurs, the passing can build a transitive binary relationship between our players.  Therefore, we can use this characteristic to construct a continuous football passing chain, which is continuous and transitive.  The general construction method is: According to the data in passingevents, we record the process of continuous passing of football between Huskies players with a linked chain.  This chain will continue until disruptive occasions such as shooting, out of bounds or the football is intercepted by the opponent occur.  In this way, we get a chain that records the continuous passing of the Huskies players.
 
 	From the continuous football passing chains, we can easily identify those dyadic and triadic configurations.  For example, if we want to identify a dyadic configuration, we can study these chains based on the characteristics that players in this dyadic configuration pass each other more frequently.  We can just number these two players we are studying as 0 and 1. In this way, there will be a large number of fragments like"0 - 1 - 0 - 1" or "0 - 1 - 0 - 1 - 0" in the continuous football passing chain.  If we want to identify those triadic configurations, we can just look for those fragments such as "0 - 1 - 2 - 1" or "0 - 1 - 2 - 0" from the continuous football pass chain.  Obviously, we can make similar judgments about multiple configurations.
 \subsubsection{Network Centroid And Advance Ratio}
+	Studying the network centroid and advancing ratio of Huskies' football passing network will display the spatial features of the network better~\cite{First}.  In this section, we will study the coordinates of the network centroid of the football passing network constructed previously, the dispersion of the position of Huskies players around the network centroid, and the advance ratio.
+
+	We first study the coordinates of football passing network centroid.  According to the description of coordinates in readme, the x-coordinate on the field is oriented from the perspective of the team that is attacking, where 0 indicates the attacking team's own goal, and 100 indicates the oppositing team's goal.  While for y-coordinate, 0 indicates the attacking team's left-hand side, and 100 indicates its right-hand side.  We define the coordinates of a pass $(x_{i}, y_{i})$ as the average of the origin and destination positions.  Furthermore, we define the coordinates of the network centroid over a period of time as the average coordinates of all passes during that period.  It can be expressed as the following formula: 
+	$$\langle X \rangle=\sum_{i=1}^n\frac{1}{n} x_{i}$$
+	$$\langle Y \rangle=\sum_{i=1}^n\frac{1}{n} y_{i}$$
+	The change of the network centroid coordinates over time can clearly reflect the overall movement tendency of the entire team during this time.  Besides,regardless of the length of the research period, it can always convey some information about the spatial features of the network.
+
+	Then we continue to study the dispersion of the position of Huskies players around the network centroid.  Similarly, we define the dispersion of the position of Huskies players around the network centroid over a period of time $D$ as the variance between the average position of each player and the position of the network centroid during this period.  It can show how dispersed the team is on the court during this time.  Hence it can also reflect the degree of team control over the playing field during this time.  The greater the degree of dispersion, the stronger the team's ability to control the field.
+
+	Finally, we define the team's advance ratio over a period of time $r$ as the ratio of the sum of the absolute values ​​of the lateral displacement and the sum of the absolute values ​​of the longitudinal displacement of all its passes during that period. Its formula is:
+	$$r=\frac{|\Sigma \Delta x|}{|\Sigma \Delta y|}$$
+	The advance ratio indicates the team's passing direction.  Besides, it can also reflect the team's movement tendency and offensiveness during this period.
 \subsection{Identify Teamwork Indicators}
 \section{Implementation}
 \section{Structural Strategies}
