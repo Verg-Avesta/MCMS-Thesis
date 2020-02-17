@@ -46,7 +46,7 @@
 \begin{document}
 \linespread{0.6} %%行间距
 \setlength{\parskip}{0.5\baselineskip} %%段间距
-\title{ti}
+\title{NEAP: A Network Model of the Huskies}
 
 \date{\today}
 	\begin{abstract}
@@ -111,6 +111,7 @@
 				$\lambda_{2}$ & The second smallest eigenvalue of the Laplacian matrix\\
 				$C$ & The clustering coefficient\\
 				$d$ & The average shortest path\\
+				$S$ & The teamwork Score\\
 			\hline
    	 	\end{tabular}
 	\end{table}
@@ -335,7 +336,21 @@
 
 	In summary, we choose the inverse of the average shortest path $\frac{1}{d}$ to be the score of flexibility $FS$.
 \subsubsection{Teamwork Score}
-	Now we have got five scores of different indicators of teamwork. So we will combine these five scores into one representative score next.  We first normalize all scores.
+	Now we have got five scores of different indicators of teamwork. So we will combine these five scores into one representative score next.  We first normalize all the scores. After that, we combine these scores into the final teamwork score $S$ by weighting. The corresponding judgment matrix is:
+
+	\begin{equation}\label{mat:n}
+		S=
+ 	\begin{matrix}
+   		 & OS & DS & CS & RS & FS \\
+   		OS & 1 & 1 & 3 & 2 & 2 \\
+		DS & 1 & 1 & 2 & 2 & 2\\
+		CS & \frac{1}{3} & \frac{1}{2} & 1 & 2 & 1\\ 
+		RS & \frac{1}{2} & \frac{1}{2} & \frac{1}{2} & 1 & 2\\ 
+		FS & \frac{1}{2} & \frac{1}{2} & 1 & \frac{1}{2} & 1
+		
+  	\end{matrix} 
+	\end{equation}
+	Therefore, we obtain the final teamwork score $S$.
 \section{Implementation}
 	In this section, we will analyze network patterns and teamwork indicators of Huskies' football passing network by studying the data given in problem. 
 \subsection{Network Patterns}
@@ -649,6 +664,35 @@ In our model, the most sensitive part is the judgment matrix, which was totally 
 In order to test the sensitivity of the judgment matrices, we changed some of the values in the matrices and ensure them meet the consistency requirements. Then we ran the model in section 4.3 again and compared them with the origin ones. We found that the difference between the two results is small, which means that the model has low sensitivity to the judgment matrix.
 
 \subsection{Strengths and Weakness}
+\subsubsection{Strengths}
+\begin{enumerate}
+\item Reliable Calculations
+
+\qquad We used the analytic hierarchy process (AHP), analyzed the data in all aspects from shallow to deep, and finally achieved the abstract team's tactical analysis from specific underlying events.
+\item Accurate to the Results
+
+\qquad The model scores the team by calculating the performance on the court, and teams with high scores often win in the end.
+\item Practical Strategy
+
+\qquad After the model is established, we put forward effective suggestions for the deficiencies of the Husky team through the analysis and comparison of the Huskies and the strong teams.
+\item Expandable Model
+
+\qquad As long as data is available, our model can calculate the score of any
+team.
+\item Comprehensive Visualization
+
+\qquad The model comprehensively uses various visualizations to present the calculation results and analysis process to the readers, which is dynamic and intuitive.
+\end{enumerate}
+\subsubsection{Weakness}
+\begin{enumerate}
+\item Simplified Assumptions
+
+\qquad Simplified assumptions are adopted for a solvable model, so the
+result may slightly digress from the ground truth. For example, sometimes the team's score result is opposite to the actual match result.
+\item Subjectivity
+
+\qquad Due to the one-sidedness of the data, such as the movement without a ball was not recorded, we ignored some important factors, which led to the lack of pertinence in the establishment of a defensive model.
+\end{enumerate}
 \section{Conclusion}
 
 \bibliography{ref}
