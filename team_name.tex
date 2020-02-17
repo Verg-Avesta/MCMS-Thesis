@@ -49,13 +49,23 @@
 \title{NEAP: A Network Model of the Huskies}
 
 \date{\today}
-	\begin{abstract}
+\begin{abstract}
+\par Analyzing football match data is a significant and effective way for many coaches and fans to evaluate team performance. To analyze this problem more comprehensively and scientifically, we established a model that was able to analyze various aspects of the capabilities of the football teams from different perspectives. This will help to improve the team's tactics in a more detailed and accurate way.\par
 
-	
-		\begin{keywords}
-		
-		\end{keywords}
-	\end{abstract}
+Firstly, we analyzed the passing events and got a \textbf{football passing matrix}, which represents the number of passes. Then, based on this passing matrix, we draw a passing relationship diagram with players as nodes and the number of passes as edges. The diagram clearly shows the relationship between players in different positions.\par
+
+Secondly, we built a \textbf{countinuous football passing chain}, which shows the most common passing methods used by two or more players in a match. With the help of the countinuous football passing chain, we can easily analyze the specific tactics that players take when passing each other.\par
+
+Based on the passing matrix, we established a \textbf{comprehensive evaluation model} that has the ability to evaluate various indicators including offense, defense, coordination, robustness and flexibility. In order to implement this model, we identified 15 indicators that can be calculated from existing data based on the network science. We used a \textbf{tree-like structure} to assign weights to each normalized individual indicator and used the judgment matrix in AHP to determine the weight. The final result of the evaluation model can well analyze the team's performance in the game.\par
+
+Then we used this model to compare the detailed indicators of the Huskies with the teams that performed better than it and analyzed the influence factors behind. We found that the Huskies are far worse than their opponents which won the games in terms of the indicators of offense, defense and robustness. We tried lots of methods to find the high-scoring tactics,include deep neural networks and multi-dimensional indicator statistics. Based on these statistical results, we had come up with a series of tactics that can effectively improve the indicators.
+
+Out model combines \textbf{N}etwork Science, \textbf{E}valuation Model, tree-like \textbf{A}nalysis and AH\textbf{P} together, so we call it \textbf{NEAP} in short.
+
+	\begin{keywords}
+		football tactics, judgment matrix, deep learning, team management, network science, AHP
+	\end{keywords}
+\end{abstract}
 
 \maketitle
 
