@@ -71,7 +71,7 @@
 		\label{fig:football}
 	\end{figure}
 
-	As we all know, football is a sport that requires intense teamwork.  For it can show the importance of teamwork spirit more than superb personal ability.  Passing, as an offensive means that requires the cooperation of various players to play the biggest role, is just an important manifestation of the team spirit of football.  Therefore, to study the important role of teamwork in football, you can start by studying the passing network in football.
+	As we all know, football is a sport that requires intense teamwork.  For it can show the importance of teamwork spirit more than superb personal ability.  Passing, as an offensive means that requires the cooperation of various players to play the biggest role, is just an important manifestation of the team spirit of football.  Therefore, to study the important role of teamwork in football, we will start by studying the passing network in football.
 
 	Our goal is to build a network model to simulate the Huskies' passing network and study it.  Meanwhile, it is necessary to extract some representative parameters from the constructed network model.  Through the study of such parameters, we can accurately understand the team collaboration ability and structural characteristics of this team.
 \subsection{Our Work}
@@ -157,6 +157,121 @@
 	$$r=\frac{|\Sigma \Delta x|}{|\Sigma \Delta y|}$$
 	The advance speed indicates the team's passing direction.  Besides, it can also reflect the team's movement tendency and offensiveness during this period.
 \subsection{Identify Teamwork Indicators}
+	In this part, we comprehensively use AHP analysis method for modeling, and use judgment matrix to choose the weight of each factor. Besides, all scores are normalized before weighting.
+
+	We comprehensively analyze the composition of events on the court and abstract based on existing data, and propose the following model.  The model that captures structural, configurational, and dynamical aspects of teamwork mainly includes the following five aspects:
+	\begin{itemize}
+		\item Offensive score;
+		\item Defensive score;
+		\item Coordination score;
+		\item Robustness score;
+		\item Flexibility score.
+	\end{itemize}
+\subsubsection{Offensive Score}
+	In theory, tactics do not have the so-called advantages and disadvantages. The quality of tactics should depend on whether they can work wonders.  Based on this, the evaluation of an offensive tactic should be based on the performance of the attacker, the performance of the defender, and some special situations.
+	\begin{enumerate}
+	\item The Performance of the Attacker
+	
+	The offense on the football field is nothing more than passing and shooting. Apart from cases that the player can shoot alone because of excellent personal strength, good offense should be the result of successful teamwork.  Therefore, the number of passes should be the main consideration. Pass is divided into simple pass, smart pass, head pass, high pass and hand pass. And the main ones that appear in the offense are simple pass and smart pass. Head pass and high pass will only appear in specific situations, so they are not considered here.
+
+	At the same time, the ball possession rate in the opponent's penalty area is also an important indicator of the aggressiveness of the offense. As the defender's last area, the penalty area is unquestionably strong.  Defensively, every striker will be pressed by at least one person.  And there will even be double-jacketing and multiple-jacketing situations.Therefore, the statistics of the ball control rate here is of great significance. It can comprehensively reflect the quality of tactics.Good tactics should be those the team can still control the ball in the face of high-intensity defense.
+
+	And for the opponent will defend for each attack, the perfect attack should be that pass more to minimize the confrontation, so the number of confrontations in each attack should also be considered.  Note that each confrontation in the event table occurs in pairs: ground attacking duel and ground defending duel.  Therefore, this pair is directly referred to as ground duel in our analysis.  But in the event statistics, as long as the offensive and defensive opponents face each other, the situation is counted as ground duel.  Hence the events after the ground duel should be counted. The general choice is to quickly pass the ball to others or choose to pass the ball by himselt with extraodinary skills, so these two indicators should be considered together.
+
+	Then good tactics also have the option of making fouls. Making fouls in the penalty area can earn a free kick. At this time, the foul is really worth a thousand dollars, so we will also count the number of fouls in each attack.
+	
+	Based on this, the quantitative indicators are as follows:
+	
+	\begin{itemize}
+		\item $\eta$ is the football possession time ratio;
+		\item $p_{1}$ is the number of simple passes;
+		\item $p_{2}$ is the number of smart passes;
+		\item $n_{1}$ is the number of passes after ground duel;
+		\item $n_{2}$ is the number of ground duels after ground duel;
+		\item $n_{3}$ is the number of free kicks after making the opponent foul.
+	\end{itemize}
+
+	The corresponding judgment matrix is:
+	\begin{equation}\label{mat:1}
+		M_{1}=
+ 	\begin{matrix}
+   		 & \eta & p_{1} & p_{2} & n_{1} & n_{2} & n_{3} \\
+   		\eta & 1 & 3 & 1 & 1 & 1 & \frac{1}{2} \\
+		p_{1} & \frac{1}{3} & 1 & \frac{1}{3} & \frac{1}{3} &\frac{1}{3} &\frac{1}{7}\\
+		p_{2} & 1 & 3 & 1 & 1 & 1 & \frac{1}{2} \\ 
+		n_{1} & 1 & 3 & 1 & 1 & 1 & \frac{1}{2} \\ 
+		n_{2} & 1 & 3 & 1 & 1 & 1 & \frac{1}{3} \\
+		n_{3} & 2 & 7 & 2 & 2 & 3 & 1 
+		
+  	\end{matrix} 
+	\end{equation}
+	
+	\item The Performance of the Defender
+	
+	The quality of an offense can also be judged from the other side, that is, the performance of the defensive end. The execution of an offensive tactic in place should theoretically fly the ball towards the goal and no opponent player blocks it.  At this time, the opponent team can only rely on the goalkeeper's response to try a save attempt.  Therefore, the defensive save attempt can also judge the quality of an offensive tactic.
+
+	\begin{itemize}
+		\item $d$ is the number of the opponent's save attempts.
+	\end{itemize}
+
+	\item Special Situations
+	
+	In some special cases, the tactics are just the front pavement. At that time, whether the goal can be achieved depends on the player ’s personal play and a certain degree of luck. In that case, it is usually a long corner kick, cross to the penalty area and rely on the player's aerial confrontation to pass the header, or run to the ball in advance to grab the ball and successfully shoot. In these cases, the tactics generally only prepare the first half, so it should be considered.
+
+	\begin{itemize}
+		\item $f$ is the number of shots right after crossing to the penalty area or right after corner.
+	\end{itemize}
+
+	\end{enumerate}
+	The offensive tactics are scored by analyzing \textbf{the overall performance of the attacker, the performance of the defender, and the special situation}.The corresponding judgment matrix is:
+
+	\begin{equation}\label{mat:2}
+		M_{2}=
+	  \begin{matrix}
+		& M_{1} & d &f\\
+   		M_{1} & 1 & 1 & 2 \\
+   		d & 1 & 1 & 2 \\
+   		f & \frac{1}{2} & \frac{1}{2} & 1
+  	\end{matrix}
+	\end{equation}
+	
+\subsubsection{Defensive Score}
+	For the event table cannot reflect the occupancy of each defensive player, there is no way to know which defensive strategy is actually used. Therefore we can only start from the event-driven and consider the location of each event to establish our model.
+	\begin{enumerate}
+	\item ODC
+	
+	ODC refers to the number of opponent's successful passes within 20 yards of Huskies' bottom line. This area is the core defense area and the last defense area for each team.  By judging the number of successful passes by the opponent within 20 yards of the bottom line, it can clearly reflect the level of the team's defensive level from the side, and it can also reflect the level of the team's defensive tactics. Good defensive tactics will make it impossible for the enemy players to find a point to cope with, which means that the number of successful passes will be reduced.
+
+	Therefore, the smaller the ODC value, the better the defensive effect of this game. Limiting the opponent's offense can indicate that the defensive quality is great, and the frequency of threats to the defensive area of ​​this team's own side is low.
+
+	\begin{itemize}
+		\item $ODC$ is the number of successful passes within 20 yards of this team's own baseline.
+	\end{itemize}
+
+	\item PPDA
+	
+	In PPDA, defensive actions are defined in the following four areas: steals, interceptions, confrontations, and fouls.  In this indicator, we only consider the pressure exerted by the player when defending against the opponent, and not care about other issues.
+
+	The smaller the value of PPDA, it means that the team's defensive strength is higher, and this also shows from a side that in this particular area, the chances of the offensive team wanting to use the pass to tear the defensive team's defense line are relatively small.
+
+	Of course, it is impossible for any team that adopts pressure defense to adopt such a strategy throughout the entire game. Most of the time, pressure defense has a trigger point, such as a player entering a specific area (this is also called trigger switch).  However, if all these factors are taken into account, the project volume will be quite huge, and some artificial subjective factors will be mixed into it.  Therefore, in the "defense strength" indicator, we will only provide an objective data, which is measured by all the defensive actions and the number of passes of the two sides in a specific area.
+
+	\begin{itemize}
+		\item $PPDA$ is total number of offensive passes $\div$ total number of defensive moves by the defending team.
+	\end{itemize}
+
+	\item The opponent's Shot/Goal
+	
+	From the macro level, measuring the defensive strength of a team will undoubtedly start from the number of broken goals.  However, the number of shots alone is not statistically significant. Therefore, the total number of shots of the enemy should also be counted. The shot / goal ratio is more general. It represents how many shots are required for each shot. The greater the number,  It means that the stronger the defense, the more difficult it is for enemy players to find good shots, and the stronger the defense of our players.
+
+	\begin{itemize}
+		\item $SG$ is the number of opponent's shot $\div$ the number of opponent's goal.
+	\end{itemize}
+
+	\end{enumerate}
+\subsubsection{Coordination Score}
+\subsubsection{Robustness Score}
+\subsubsection{Flexibility Score}
 \section{Implementation}
 	In this section, we will analyze network patterns and teamwork indicators of Huskies' football passing network by studying the data given in problem. 
 \subsection{Network Patterns}
@@ -211,7 +326,7 @@
 		\caption{The Change of Network Centroid's Coordinates, the Dispersion of the Position of the Players around the Network Centroid And the Advance Speed over Time in a Game.}\label{fig:game}
 	\end{figure}
 
-	After that, we can also analyze the changes in the spatial features of the Huskies players throughout the entire season.  It can be seen from figure \ref{fig:season} that the coordinates of the network centroid are fluctuating throughout the season, but the amplitude of the fluctuations is not very large. It can be considered that the average spatial position of the Huskies players is relatively stable in all games throughout the season.  The change of thedispersion of the position of the players around the network centroid and advance speed throughout the season is more obvious, indicating that the spatial distribution density of the Huskies players and the direction of passes will make relatively clear changes with different opponents.
+	After that, we can also analyze the changes in the spatial features of the Huskies players throughout the entire season.  It can be seen from Figure \ref{fig:season} that the coordinates of the network centroid are fluctuating throughout the season, but the amplitude of the fluctuations is not very large. It can be considered that the average spatial position of the Huskies players is relatively stable in all games throughout the season.  The change of thedispersion of the position of the players around the network centroid and advance speed throughout the season is more obvious, indicating that the spatial distribution density of the Huskies players and the direction of passes will make relatively clear changes with different opponents.
 
 	\begin{figure}[h]
 		\centering
@@ -249,6 +364,14 @@
 
 \begin{appendices}
 
+\section{Mode Motifs for Multiple Configurations}
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=\textwidth]{figures/motif4.png}
+	\caption{Mode Motifs for Multiple Configurations}
+	\label{fig:motif4}
+\end{figure}
 
 \end{appendices}
 
