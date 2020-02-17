@@ -103,6 +103,8 @@
 				$\langle$$Y$$\rangle$ & The y-coordinate of the network centroid\\
 				$D$ & The dispersion of the position of the players around the network centroid\\
 				$r$ & The advance speed\\
+				$\textbf{L}$ & The Laplacian matrix\\
+				$\lambda_{2}$ & The second smallest eigenvalue of the Laplacian matrix\\
 			\hline
    	 	\end{tabular}
 	\end{table}
@@ -131,7 +133,7 @@
 	
 	\begin{figure}[h]
 		\centering
-		\includegraphics[width=\textwidth]{figures/playground.png}
+		\includegraphics[width=0.7\textwidth]{figures/playground.png}
 		\caption{An Example of the Football Passing Network}
 		\label{fig:playground}
 	\end{figure}
@@ -267,9 +269,28 @@
 	\begin{itemize}
 		\item $SG$ is the number of opponent's shot $\div$ the number of opponent's goal.
 	\end{itemize}
-
 	\end{enumerate}
+	The defensive tactics should be scored through the overall analysis of \textbf{ODC, PPDA, and SG}.The corresponding judgment matrix is:
+
+	\begin{equation}\label{mat:3}
+		M_{3}=
+	  \begin{matrix}
+		& ODC & PPDA & SG\\
+   		ODC & 1 & 1 & \frac{1}{2} \\
+   		PPDA & 1 & 1 & \frac{1}{3} \\
+   		SG & 2 & 3 & 1
+  	\end{matrix}
+	\end{equation}
+
 \subsubsection{Coordination Score}
+	We believe that the better the coordination of a team, the more closely the football passing network it corresponds to.  Therefore, we will investigate the algebraic connectivity of this network, which is measured by the second smallest eigenvalue $\lambda_{2}$ of the Laplacian matrix $\textbf{L}$~\cite{First}.
+
+	The Laplacian matrix $\textbf{L}$ is defined as $\textbf{L}=\textbf{S}-\textbf{A}$,where:
+	\begin{itemize}
+	\item \textbf{A} is the weighted adjacency matrix of the football passing network.
+	\item \textbf{S} is a diagonal matrix, and the $i$-elements of it are defined to be the sum of the $i$th player's passes.
+	\end{itemize}
+	Those networks with higher  $\lambda_{2}$ usually do not need a long time to synchronize. Besides, those networks always reach equilibrium faster in difussion processes.  If we consider these factors in football games, we will find that those teams whose networks have higher $\lambda_{2}$ will be able to cover the court more quickly, and they are also more interconnected.  Therefore, we will choose $\lambda_{2}$ to be the coordination score of the football passing network.
 \subsubsection{Robustness Score}
 \subsubsection{Flexibility Score}
 \section{Implementation}
