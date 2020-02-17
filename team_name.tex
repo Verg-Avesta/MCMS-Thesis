@@ -75,11 +75,11 @@ Out model combines \textbf{N}etwork Science, \textbf{E}valuation Model, tree-lik
 
 \section{Introduction}
 \subsection{Problem Background}
-	Football is one of the most well-known sports activities in the world.  The standard system of an 11-man football game is one goalkeeper and 10 players from each of the two teams. There are a total of 22 players who fight, defend and attack on the rectangular grass court.  The game scores by shooting the ball into the opponent's goal. When the game is over, the team with the most points wins.
+	Football is one of the most well-known sports activities in the world.  The standard system of an 11-man football game is one goalkeeper and 10 players from each of the two teams. There are a total of 22 players who fight, defend and attack on the rectangular grass court.  The game scores by shooting the ball into the opponent's goal.
 
 	\begin{figure}[h]
 		\centering
-		\includegraphics[width=0.75\textwidth]{figures/football.jpg}
+		\includegraphics[width=0.4\textwidth]{figures/football.jpg}
 		\caption{A Football Game~\cite{Wiki_Football}}
 		\label{fig:football}
 	\end{figure}
@@ -139,7 +139,7 @@ Out model combines \textbf{N}etwork Science, \textbf{E}valuation Model, tree-lik
 			0& \text{$i = j$}
 		\end{cases}
 	\end{equation}
-	In this way, we obtain an asymmetric square matrix of order $n$.  Next, on this basis, we try to build an undirected graph model to describe the team's passing network.  But as we have mentioned before, the adjacency matrix of an undirected graph is a symmetric matrix, while the football passing matrix $\textbf{A}$ we constructed is asymmetric.  Therefore, we need to construct a symmetric adjacency matrix $\textbf{B}$ using this asymmetric passing matrix $\textbf{A}$.  To achieve this, we define $\textbf{B}$ as the sum of $\textbf{A}$ and the transposed matrix of $\textbf{A}$, that is to say, for each element $b_{ij}$ in B, the following formula is satisfied:
+	In this way, we obtain an asymmetric square matrix of order $n$.  Next, on this basis, we try to build an undirected graph model to describe the team's passing network. We need to construct a symmetric adjacency matrix $\textbf{B}$ using this asymmetric passing matrix $\textbf{A}$.  To achieve this, we define $\textbf{B}$ as the sum of $\textbf{A}$ and the transposed matrix of $\textbf{A}$, that is to say, for each element $b_{ij}$ in B, the following formula is satisfied:
 	\begin{equation}
 		\label{eq:Mat_B}
 		b_{ij} = a_{ij} + a_{ji}
@@ -152,7 +152,7 @@ Out model combines \textbf{N}etwork Science, \textbf{E}valuation Model, tree-lik
 	
 	\begin{figure}[h]
 		\centering
-		\includegraphics[width=0.7\textwidth]{figures/playground.png}
+		\includegraphics[width=0.6\textwidth]{figures/playground.png}
 		\caption{An Example of the Football Passing Network}
 		\label{fig:playground}
 	\end{figure}
@@ -161,7 +161,7 @@ Out model combines \textbf{N}etwork Science, \textbf{E}valuation Model, tree-lik
 \subsubsection{Continuous Football Passing Chain}
 	Just as we have stated in assumption 2, when players in a dyadic or triadic configuration continuously pass each other far more frequently than they do with other players in the team, we consider this configuration tight.  Therefore, when investigating the tightness of such configurations, we need to study the behavior of continuous passing between players.  For this reason, we construct a continuous football passing chain as a tool to study this behavior according to the football passing network.
 
-	In football games, passing is a very continuous activity.  It can be said that before occasion like shooting, out of bounds or the football is intercepted by the opposing player occurs, the passing can build a transitive binary relationship between our players.  Therefore, we can use this characteristic to construct a continuous football passing chain, which is continuous and transitive.  The general construction method is: According to the data in passingevents, we record the process of continuous passing of football between Huskies players with a linked chain.  This chain will continue until disruptive occasions such as shooting, out of bounds or the football is intercepted by the opponent occur.  In this way, we get a chain that records the continuous passing of the Huskies players.
+	The general construction method is: According to the data in passingevents, we record the process of continuous passing of football between Huskies players with a linked chain.  This chain will continue until disruptive occasions such as shooting, out of bounds or the football is intercepted by the opponent occur.  In this way, we get a chain that records the continuous passing of the Huskies players.
 
 	From the continuous football passing chains, we can easily identify those tight dyadic and triadic configurations.  For example, if we want to identify a dyadic configuration, we can study these chains based on the characteristics that players in this dyadic configuration pass each other more frequently.  We can just number these two players we are studying as 0 and 1. In this way, there will be a large number of fragments like"0 - 1 - 0 - 1" or "0 - 1 - 0 - 1 - 0" in the continuous football passing chain.  If we want to identify those triadic configurations that are tight, we can just look for those fragments such as "0 - 1 - 2 - 1" or "0 - 1 - 2 - 0" from the continuous football pass chain.  Obviously, we can make similar judgments about multiple configurations.  Therefore, it will be convenient for us to find out which kind of configuration appears most.
 \subsubsection{Network Centroid And Advance Speed}
@@ -193,11 +193,11 @@ Out model combines \textbf{N}etwork Science, \textbf{E}valuation Model, tree-lik
 	\begin{enumerate}
 	\item The Performance of the Attacker
 	
-	\qquad The offense on the football field is nothing more than passing and shooting. Apart from cases that the player can shoot alone because of excellent personal strength, good offense should be the result of successful teamwork.  Therefore, the number of passes should be the main consideration. Pass is divided into simple pass, smart pass, head pass, high pass and hand pass. And the main ones that appear in the offense are simple pass and smart pass. Head pass and high pass will only appear in specific situations, so they are not considered here.
+	\qquad The offense on the football field is nothing more than passing and shooting. Apart from cases that the player can shoot alone because of excellent personal strength, good offense should be the result of successful teamwork.  Therefore, the number of passes should be the main consideration.
 
-	\qquad At the same time, the ball possession rate in the opponent's penalty area is also an important indicator of the aggressiveness of the offense. As the defender's last area, the penalty area is unquestionably strong.  Defensively, every striker will be pressed by at least one person.  And there will even be double-jacketing and multiple-jacketing situations.Therefore, the statistics of the ball control rate here is of great significance. It can comprehensively reflect the quality of tactics.Good tactics should be those the team can still control the ball in the face of high-intensity defense.
+	\qquad At the same time, the ball possession rate in the opponent's penalty area is also an important indicator of the aggressiveness of the offense. As the defender's last area, the penalty area is unquestionably strong.  Defensively, every striker will be pressed by at least one person.  And there will even be double-jacketing and multiple-jacketing situations.Therefore, the statistics of the ball control rate here is of great significance. 
 
-	\qquad And for the opponent will defend for each attack, the perfect attack should be that pass more to minimize the confrontation, so the number of confrontations in each attack should also be considered.  Note that each confrontation in the event table occurs in pairs: ground attacking duel and ground defending duel.  Therefore, this pair is directly referred to as ground duel in our analysis.  But in the event statistics, as long as the offensive and defensive opponents face each other, the situation is counted as ground duel.  Hence the events after the ground duel should be counted. The general choice is to quickly pass the ball to others or choose to pass the ball by himselt with extraodinary skills, so these two indicators should be considered together.
+	\qquad And for the opponent will defend for each attack, the perfect attack should be that pass more to minimize the confrontation, so the number of confrontations in each attack should also be considered.  
 
 	\qquad Then good tactics also have the option of making fouls. Making fouls in the penalty area can earn a free kick. At this time, the foul is really worth a thousand dollars, so we will also count the number of fouls in each attack.
 	
@@ -262,33 +262,16 @@ Out model combines \textbf{N}etwork Science, \textbf{E}valuation Model, tree-lik
 	\begin{enumerate}
 	\item ODC
 	
-	\qquad ODC refers to the number of opponent's successful passes within 20 yards of Huskies' bottom line. This area is the core defense area and the last defense area for each team.  By judging the number of successful passes by the opponent within 20 yards of the bottom line, it can clearly reflect the level of the team's defensive level from the side, and it can also reflect the level of the team's defensive tactics. Good defensive tactics will make it impossible for the enemy players to find a point to cope with, which means that the number of successful passes will be reduced.
-
-	\qquad Therefore, the smaller the ODC value, the better the defensive effect of this game. Limiting the opponent's offense can indicate that the defensive quality is great, and the frequency of threats to the defensive area of ​​this team's own side is low.
-
-	\begin{itemize}
-		\item $ODC$ is the number of successful passes within 20 yards of this team's own baseline.
-	\end{itemize}
+	\qquad \textbf{ODC refers to the number of opponent's successful passes within 20 yards of Huskies' bottom line.} This area is the core defense area and the last defense area for each team. It can clearly reflect the level of the team's defensive level from the side. The smaller the ODC value, the better the defensive effect of this game.
 
 	\item PPDA
 	
-	\qquad In PPDA, defensive actions are defined in the following four areas: steals, interceptions, confrontations, and fouls.  In this indicator, we only consider the pressure exerted by the player when defending against the opponent, and not care about other issues.
-
-	\qquad The smaller the value of PPDA, it means that the team's defensive strength is higher, and this also shows from a side that in this particular area, the chances of the offensive team wanting to use the pass to tear the defensive team's defense line are relatively small.
-
-	\qquad Of course, it is impossible for any team that adopts pressure defense to adopt such a strategy throughout the entire game. Most of the time, pressure defense has a trigger point, such as a player entering a specific area (this is also called trigger switch).  However, if all these factors are taken into account, the project volume will be quite huge, and some artificial subjective factors will be mixed into it.  Therefore, in the "defense strength" indicator, we will only provide an objective data, which is measured by all the defensive actions and the number of passes of the two sides in a specific area.
-
-	\begin{itemize}
-		\item $PPDA$ is total number of offensive passes $\div$ total number of defensive moves by the defending team.
-	\end{itemize}
+	\qquad \textbf{PPDA is total number of offensive passes / total number of defensive moves by the defending team.} In PPDA, defensive actions are defined in the following four areas: steals, interceptions, confrontations, and fouls. The smaller the value of PPDA, it means that the team's defensive strength is higher, and this also shows from a side that in this particular area, the chances of the offensive team wanting to use the pass to tear the defensive team's defense line are relatively small.
 
 	\item The opponent's Shot/Goal
 	
-	\qquad From the macro level, measuring the defensive strength of a team will undoubtedly start from the number of broken goals.  However, the number of shots alone is not statistically significant. Therefore, the total number of shots of the enemy should also be counted. The shot / goal ratio is more general. It represents how many shots are required for each shot. The greater the number,  It means that the stronger the defense, the more difficult it is for enemy players to find good shots, and the stronger the defense of our players.
+	\qquad \textbf{SG is the number of opponent's shot / the number of opponent's goal.} From the macro level, measuring the defensive strength of a team will undoubtedly start from the number of broken goals.  However, the number of shots alone is not statistically significant. Therefore, the total number of shots of the enemy should also be counted. The shot / goal ratio is more general. It represents how many shots are required for each shot. The greater the number,  It means that the stronger the defense, the more difficult it is for enemy players to find good shots, and the stronger the defense of our players.
 
-	\begin{itemize}
-		\item $SG$ is the number of opponent's shot $\div$ the number of opponent's goal.
-	\end{itemize}
 	\end{enumerate}
 	
 	The defensive tactics should be scored through the overall analysis of \textbf{ODC, PPDA, and SG}.The corresponding judgment matrix is:
@@ -313,6 +296,7 @@ Out model combines \textbf{N}etwork Science, \textbf{E}valuation Model, tree-lik
 	\end{itemize}
 
 	Those networks with higher  $\lambda_{2}$ usually do not need a long time to synchronize. Besides, those networks always reach equilibrium faster in difussion processes.  If we consider these factors in football games, we will find that those teams whose networks have higher $\lambda_{2}$ will be able to cover the court more quickly, and they are also more interconnected.  Therefore, we will choose $\lambda_{2}$ to be the coordination score $CS$ of the football passing network.
+
 \subsubsection{Robustness Score}
 	The robustness of a team's football passing network is also an important evaluation criterion for its level of teamwork.  If the team is united internally, the robustness of its football passing network will be improved, so that the passing network can function normally when it is impacted by the opponent team.  To measure the robustness of Huskies' football passing network, we will use the clustering coefficient $C$ and the largest eigenvalue $\lambda_{1}$ of the football passing matrix $\textbf{A}$ to investigate it.  
 
@@ -329,9 +313,9 @@ Out model combines \textbf{N}etwork Science, \textbf{E}valuation Model, tree-lik
 	\item 	$w_{ij}$ is the number of passes between player i and player j.
 	\end{itemize}	
 	
-	Now we have got the cluster coefficient $C$. It is noted that the cluster coefficient can indicate the tendency of the football passing network to form triangles between players.  And when a link between two nodes of the triangle is lost, it will be much easier for those network that have higher cluster coefficient to pass through the other two edges of the triangle.  Therefore, we choose the cluster coefficient to be an indicator.
+	Now we have got the \textbf{cluster coefficient $C$, which can indicate the tendency of the football passing network to form triangles between players.}  And when a link between two nodes of the triangle is lost, it will be much easier for those network that have higher cluster coefficient to pass through the other two edges of the triangle.  Therefore, we choose the cluster coefficient to be an indicator.
 
-	As for the largest eigenvalue $\lambda_{1}$ of the football passing matrix $\textbf{A}$, it is acknowledged that $\lambda_{1}$ will increase if the number of the nodes and links in the football passing network grows.  Therefore, $\lambda_{1}$ can also serve as an indicator of the robustness of the football passing network.
+	As for the largest eigenvalue $\lambda_{1}$ of the football passing matrix $\textbf{A}$, it is acknowledged that $\lambda_{1}$ will increase if the number of the nodes and links in the football passing network grows.  Therefore, \textbf{$\lambda_{1}$ can also serve as an indicator of the robustness of the football passing network.}
 
 	In summary, we define robustness score $RS$ as $RS = 0.5C + 0.5\lambda_{1}$, which will maintain both strengths.
 \subsubsection{Flexibility Score}
@@ -374,13 +358,13 @@ Out model combines \textbf{N}etwork Science, \textbf{E}valuation Model, tree-lik
 
 	\begin{figure}[h]
 		\centering
-		\includegraphics[width=0.75\textwidth]{figures/motif2.png}
+		\includegraphics[width=0.6\textwidth]{figures/motif2.png}
 		\caption{Statistics on the Occurrences of Different Mode Motifs of Dyadic Configuration}
 		\label{fig:motif2}
 	\end{figure}
 	\begin{figure}[h]
 		\centering
-		\includegraphics[width=0.75\textwidth]{figures/motif3.png}
+		\includegraphics[width=0.6\textwidth]{figures/motif3.png}
 		\caption{Statistics on the Occurrences of Different Mode Motifs of Triadic Configuration}
 		\label{fig:motif3}
 	\end{figure}
