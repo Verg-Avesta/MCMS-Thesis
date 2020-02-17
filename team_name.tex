@@ -100,13 +100,16 @@
 				$\textbf{B}$ & Adjacency matrix\\
 				$G$ & Undirected graph representing the football passing network\\
 				$p_{i}$ & The \emph{i}th player in Huskies\\
-				$p_{ij}$ & Number of passes from player $i$ to player $j$\\
+				$w_{ij}$ & Number of passes from player $i$ to player $j$\\
 				$\langle$$X$$\rangle$ & The x-coordinate of the network centroid\\
 				$\langle$$Y$$\rangle$ & The y-coordinate of the network centroid\\
 				$D$ & The dispersion of the position of the players around the network centroid\\
 				$r$ & The advance speed\\
 				$\textbf{L}$ & The Laplacian matrix\\
+				$\lambda_{1}$ & the largest eigenvalue of the football passing matrix\\
 				$\lambda_{2}$ & The second smallest eigenvalue of the Laplacian matrix\\
+				$C$ & The clustering coefficient\\
+				$d$ & The average shortest path\\
 			\hline
    	 	\end{tabular}
 	\end{table}
@@ -118,7 +121,7 @@
 	\begin{equation}\label{eq:Mat_A}
 		a_{ij} =
 		\begin{cases}
-			p_{ij}& \text{$i \neq j$}\\
+			w_{ij}& \text{$i \neq j$}\\
 			0& \text{$i = j$}
 		\end{cases}
 	\end{equation}
@@ -297,8 +300,39 @@
 
 	Those networks with higher  $\lambda_{2}$ usually do not need a long time to synchronize. Besides, those networks always reach equilibrium faster in difussion processes.  If we consider these factors in football games, we will find that those teams whose networks have higher $\lambda_{2}$ will be able to cover the court more quickly, and they are also more interconnected.  Therefore, we will choose $\lambda_{2}$ to be the coordination score of the football passing network.
 \subsubsection{Robustness Score}
-	To measure the robustness of Huskies' football passing network, we will use 
+	The robustness of a team's football passing network is also an important evaluation criterion for its level of teamwork.  If the team is united internally, the robustness of its football passing network will be improved, so that the passing network can function normally when it is impacted by the opponent team.  To measure the robustness of Huskies' football passing network, we will use the clustering coefficient $C$ and the largest eigenvalue $\lambda_{1}$ of the football passing matrix $\textbf{A}$ to investigate it.  
+
+	In general occasions, we define the cluster coefficient of node $i$ as the percentage of the nodes directly connected to it that, in turn, are connected between them.  But for the football passing network, the network is weighted because not all players pass each other the same times.  In this case, we define the cluster coefficient as the average weighted cluster coefficient of all players in the team :
+	\begin{equation}\label{eq:cwi}
+		C_{w}(i) = \frac{\Sigma_{j,k}w_{ij}w_{jk}w_{ik}}{\Sigma_{j,k}w_{ij}w_{ik}}
+	\end{equation}
+	\begin{equation}\label{eq:c}
+		C = \frac{\sum_{i=1}^n C_{w}(i)}{N}
+	\end{equation}
+	where:
+	\begin{itemize}
+	\item $i$, $j$ and $k$ are three players in the team;
+	\item 	$w_{ij}$ is the number of passes between player i and player j.
+	\end{itemize}	
+	
+	Now we have got the cluster coefficient $C$. It is noted that the cluster coefficient can indicate the tendency of the football passing network to form triangles between players.  And when a link between two nodes of the triangle is lost, it will be much easier for those network that have higher cluster coefficient to pass through the other two edges of the triangle.  Therefore, we choose the cluster coefficient to be an indicator.
+
+	As for the largest eigenvalue $\lambda_{1}$ of the football passing matrix $\textbf{A}$, it is acknowledged that $\lambda_{1}$ will increase if the number of the nodes and links in the football passing network grows.  Therefore, $\lambda_{1}$ can also serve as an indicator of the robustness of the football passing network.
+
+	In summary, we define robustness score $RB$ as $RB = 0.5C + 0.5\lambda_{1}$, which will maintain both strengths.
 \subsubsection{Flexibility Score}
+	We define the "topological distance" between two nodes in the network as the inverse of the weight of the edge that connects the two nodes. Hence it is obvious that the smaller the topological distance, the easier to pass through that edge, which means the flexibility of the network is better. 
+	
+	Therefore, the average shortest path is defined as the average of the shortest topological path between all pairs of players in the network :
+	\begin{equation}\label{eq:d}
+		d = \frac{1}{N(N-1)} \sum_{i,j_{i \ne j}}p_{ij}
+	\end{equation}
+	where:
+	\begin{itemize}
+		\item 	$p_{ij}$ is the shortest topological path between node $i$ and node $j$.
+	\end{itemize}
+
+	In summary, we choose the inverse of the average shortest path $\frac{1}{d}$ to be the score of flexibility.
 \section{Implementation}
 	In this section, we will analyze network patterns and teamwork indicators of Huskies' football passing network by studying the data given in problem. 
 \subsection{Network Patterns}
@@ -330,24 +364,24 @@
 	We will analyze the statistics of a game first. Figure \ref{fig:game} shows the statistics of Huskies in a certain game.  From the coordinates of the network centroid, it can be seen that the Huskies players were closer to the opponent's goal in the second half, reflecting their fierce offensive in the second half.  It is clear by investigating the dispersion of the position of the players around the network centroid that the players are more concentrated in the second half, which confirms the opinion that the offensive in the second half is more fierce.  Judging from the advance speed, as the game progresses, the movement of the Huskies players is more inclined to go straight to the goal instead of a roundabout movement, which also confirms the previous opinion.
 	\begin{figure}[h]
 		\centering
-		\begin{subfigure}[b]{0.5\textwidth}
+		\begin{subfigure}[b]{0.24\textwidth}
 			\includegraphics[width=\textwidth]{figures/xc1.png}
-			\caption{The X-coordinate of the Network Centroid.}
+			\caption{X-coordinate.}
 			\label{fig:x1}
-		\end{subfigure}%
-		\begin{subfigure}[b]{0.5\textwidth}
+		\end{subfigure}
+		\begin{subfigure}[b]{0.24\textwidth}
 			\includegraphics[width=\textwidth]{figures/yc1.png}
-			\caption{The Y-coordinate of the Network Centroid.}
+			\caption{Y-coordinate.}
 			\label{fig:y1}
 		\end{subfigure}
-		\begin{subfigure}[b]{0.5\textwidth}
+		\begin{subfigure}[b]{0.24\textwidth}
 			\includegraphics[width=\textwidth]{figures/d1.png}
-			\caption{The Dispersion of the Position of the Players.}
+			\caption{The Dispersion.}
 			\label{fig:d1}
-		\end{subfigure}%
-		\begin{subfigure}[b]{0.5\textwidth}
+		\end{subfigure}
+		\begin{subfigure}[b]{0.24\textwidth}
 			\includegraphics[width=\textwidth]{figures/s1.png}
-			\caption{The Advance Speed.}
+			\caption{Advance Speed.}
 			\label{fig:s1}
 		\end{subfigure}
 		\caption{The Change of Network Centroid's Coordinates, the Dispersion of the Position of the Players around the Network Centroid And the Advance Speed over Time in a Game.}\label{fig:game}
@@ -357,24 +391,24 @@
 
 	\begin{figure}[h]
 		\centering
-		\begin{subfigure}[b]{0.5\textwidth}
+		\begin{subfigure}[b]{0.24\textwidth}
 			\includegraphics[width=\textwidth]{figures/xc2.png}
-			\caption{The X-coordinate of the Network Centroid.}
+			\caption{X-coordinate.}
 			\label{fig:x2}
-		\end{subfigure}%
-		\begin{subfigure}[b]{0.5\textwidth}
+		\end{subfigure}
+		\begin{subfigure}[b]{0.24\textwidth}
 			\includegraphics[width=\textwidth]{figures/yc2.png}
-			\caption{The Y-coordinate of the Network Centroid.}
+			\caption{Y-coordinate.}
 			\label{fig:y2}
 		\end{subfigure}
-		\begin{subfigure}[b]{0.5\textwidth}
+		\begin{subfigure}[b]{0.24\textwidth}
 			\includegraphics[width=\textwidth]{figures/d2.png}
-			\caption{The Dispersion of the Position of the Players.}
+			\caption{The Dispersion.}
 			\label{fig:d2}
-		\end{subfigure}%
-		\begin{subfigure}[b]{0.5\textwidth}
+		\end{subfigure}
+		\begin{subfigure}[b]{0.24\textwidth}
 			\includegraphics[width=\textwidth]{figures/s2.png}
-			\caption{The Advance Speed.}
+			\caption{Advance Speed.}
 			\label{fig:s2}
 		\end{subfigure}
 		\caption{The Change of Network Centroid's Coordinates, the Dispersion of the Position of the Players around the Network Centroid And the Advance Speed over Games in the Entire Season.}\label{fig:season}
