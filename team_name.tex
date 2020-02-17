@@ -83,7 +83,7 @@
 	Our model is based on these following basic assumptions:
 	\begin{enumerate}
 		\item The average position of a player over a period of time is equivalent to the average of the position of the player in all events that occurred during that period.
-		\item We consider a dyadic configuration tight if players in this dyadic configuration continuously pass each other far more often than they pass other players.  The same is true for triadic configurations.
+		\item We consider a dyadic configuration tight if this kind of dyadic configuration appears far more often than others.  The same is true for triadic configurations.
 	\end{enumerate}
 \section{Nomenclature}
 	Symbols that our model mainly uses are listed in Table \ref{tab:Nomen}.  Other symbols that are used only once will be described in the following chapters.
@@ -143,7 +143,7 @@
 
 	In football games, passing is a very continuous activity.  It can be said that before occasion like shooting, out of bounds or the football is intercepted by the opposing player occurs, the passing can build a transitive binary relationship between our players.  Therefore, we can use this characteristic to construct a continuous football passing chain, which is continuous and transitive.  The general construction method is: According to the data in passingevents, we record the process of continuous passing of football between Huskies players with a linked chain.  This chain will continue until disruptive occasions such as shooting, out of bounds or the football is intercepted by the opponent occur.  In this way, we get a chain that records the continuous passing of the Huskies players.
 
-	From the continuous football passing chains, we can easily identify those dyadic and triadic configurations.  For example, if we want to identify a dyadic configuration, we can study these chains based on the characteristics that players in this dyadic configuration pass each other more frequently.  We can just number these two players we are studying as 0 and 1. In this way, there will be a large number of fragments like"0 - 1 - 0 - 1" or "0 - 1 - 0 - 1 - 0" in the continuous football passing chain.  If we want to identify those triadic configurations, we can just look for those fragments such as "0 - 1 - 2 - 1" or "0 - 1 - 2 - 0" from the continuous football pass chain.  Obviously, we can make similar judgments about multiple configurations.
+	From the continuous football passing chains, we can easily identify those tight dyadic and triadic configurations.  For example, if we want to identify a dyadic configuration, we can study these chains based on the characteristics that players in this dyadic configuration pass each other more frequently.  We can just number these two players we are studying as 0 and 1. In this way, there will be a large number of fragments like"0 - 1 - 0 - 1" or "0 - 1 - 0 - 1 - 0" in the continuous football passing chain.  If we want to identify those triadic configurations that are tight, we can just look for those fragments such as "0 - 1 - 2 - 1" or "0 - 1 - 2 - 0" from the continuous football pass chain.  Obviously, we can make similar judgments about multiple configurations.  Therefore, it will be convenient for us to find out which kind of configuration appears most.
 \subsubsection{Network Centroid And Advance Ratio}
 	Studying the network centroid and advancing ratio of Huskies' football passing network will display the spatial features of the network better~\cite{First}.  In this section, we will study the coordinates of the network centroid of the football passing network constructed previously, the dispersion of the position of Huskies players around the network centroid, and the advance ratio.
 
@@ -159,6 +159,32 @@
 	The advance ratio indicates the team's passing direction.  Besides, it can also reflect the team's movement tendency and offensiveness during this period.
 \subsection{Identify Teamwork Indicators}
 \section{Implementation}
+	In this section, we will analyze network patterns and teamwork indicators of Huskies' football passing network by studying the data given in problem. 
+\subsection{Network Patterns}
+	We will search for the dyadic and triadic configurations that often appear by studying continuous football passing chain first.  After that, we will analyze the spatial features of Huskies by investigating the network centroid and advance ratio.
+\subsubsection{Dyadic And Triadic Configuration}
+	In a directed graph, we call different connection methods in dyadic and triadic configurations as different mode motifs.  It is obvious that dyadic and triadic configurations both have multiple different mode motifs~\cite{Second}.  In order to make statistics on these different mode motifs and determine which one appears most, we need to further visualize the continuous football passing chain.  Our idea is to reconstruct the continuous football pass chain into the form of a directed graph, so that the number of occurrences of motifs can be identified from the graph according to different directed graphs corresponding to different mode motif.
+
+	First, we store the data given in the problem into a continuous football passing chain in the form of a linked list.  After that, we correspond the continuous football pass chain with the players to construct a directed continuous football pass graph.  Now, we can identify those frequently appearing mode motifs from these directed graphs.  We have made statistics on the occurrence of different mode motifs, and the results are shown in the following figures.
+
+	\begin{figure}[h]
+		\centering
+		\includegraphics[width=0.75\textwidth]{figures/motif2.png}
+		\caption{Statistics on the Occurrences of Different Mode Motifs of Dyadic Configuration}
+		\label{fig:motif2}
+	\end{figure}
+	\begin{figure}[h]
+		\centering
+		\includegraphics[width=0.75\textwidth]{figures/motif3.png}
+		\caption{Statistics on the Occurrences of Different Mode Motifs of Triadic Configuration}
+		\label{fig:motif3}
+	\end{figure}
+	
+	We ignore the naive case that appears first in each configurations.  From figure \ref{fig:motif2} and figure \ref{fig:motif3}, we can intuitively see that in the case of dyadic configurations, the Huskies often use "0 - 1 - 0" and "0 - 1 - 0 - 1" mode motifs for passing.  For the triadic cases, it often uses "0 - 1 - 0 - 2", "0 - 1 - 2 - 1" and "0 - 1 - 2 - 0" mode motifs.  Compared with the longer dyadic and triadic chains, these passing mode motifs have more flexibility, but  can still be improved.
+
+	In addition to dyadic and triadic configurations, we also select the case where the number of players is 4 as a representative of multiple configurations, and make statistics on the occurrence of its different mode motifs.  But because its number of mode motifs is far more than dyadic and triadic configurations, we put it in the appendices.
+\subsubsection{Spatial Features}
+\subsection{Teamwork Indicators}
 \section{Structural Strategies}
 \section{Model Analysis}
 \subsection{Sensitivity Analysis}
