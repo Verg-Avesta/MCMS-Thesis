@@ -416,7 +416,7 @@
 \subsection{Teamwork Indicators}
 \subsubsection{Calculation of indicators}
 In the teamwork indicators model, we have 15 individual indicators in total. Most of them can be simply calculated according to the equations in section 4.3. For the shortest path matrix, we used the \textbf{Floyd Algorithm} to calculate the shortest path between every single point in the adjacency matrix.\par
-After the calculation of the individual indicators, we summed them using the judgment matrix. Instead of calculating the weight vector using matrix eigenvalue extraction, we used a simplified algorithm to calculate its approximate weight matrix. First, normalize the column vectors of the judgment matrix separately. Then add the column vectors together to get a column vector. Finally, normalize this column vector and get the weight vector $\boldsymbol{\omega}$. After that, the row vector corresponding to each indicator $\boldsymbol{I_i}$ is arranged vertically to form an indicator matrix and we can calculate its weighted sum $\boldsymbol{I'}$ according to the equation:
+After the calculation of the individual indicators, we summed them using the judgment matrix. First, we calculate the $CR=CI/RI$, which represents the consistency of the matrices, and found that they all meet the requirement: $CR<0.1$. Then, instead of calculating the weight vector using matrix eigenvalue extraction, we used a simplified algorithm to calculate its approximate weight matrix. First, normalize the column vectors of the judgment matrix separately. Then add the column vectors together to get a column vector. Finally, normalize this column vector and get the weight vector $\boldsymbol{\omega}$. After that, the row vector corresponding to each indicator $\boldsymbol{I_i}$ is arranged vertically to form an indicator matrix and we can calculate its weighted sum $\boldsymbol{I'}$ according to the equation:
 $$
 \boldsymbol{I}'=\boldsymbol{\omega}^T\left[\begin{matrix}
 		\boldsymbol{I_1} \\
@@ -578,6 +578,9 @@ In general, the formation of these teams helps the team to attack quickly and ef
 	\caption{Mode Motifs for Multiple Configurations}
 	\label{fig:motif4}
 \end{figure}
+
+\section{Code}
+
 
 \end{appendices}
 
