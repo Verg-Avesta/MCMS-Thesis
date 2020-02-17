@@ -201,7 +201,7 @@
 
 	\qquad The corresponding judgment matrix is:
 	\begin{equation}\label{mat:1}
-		M_{1}=
+		AP=
  	\begin{matrix}
    		 & \eta & p_{1} & p_{2} & n_{1} & n_{2} & n_{3} \\
    		\eta & 1 & 3 & 1 & 1 & 1 & \frac{1}{2} \\
@@ -235,10 +235,10 @@
 	The offensive tactics are scored by analyzing \textbf{the overall performance of the attacker, the performance of the defender, and the special situation}.The corresponding judgment matrix is:
 
 	\begin{equation}\label{mat:2}
-		M_{2}=
+		OS=
 	  \begin{matrix}
-		& M_{1} & d &f\\
-   		M_{1} & 1 & 1 & 2 \\
+		& AP & d &f\\
+   		AP & 1 & 1 & 2 \\
    		d & 1 & 1 & 2 \\
    		f & \frac{1}{2} & \frac{1}{2} & 1
   	\end{matrix}
@@ -281,7 +281,7 @@
 	The defensive tactics should be scored through the overall analysis of \textbf{ODC, PPDA, and SG}.The corresponding judgment matrix is:
 
 	\begin{equation}\label{mat:3}
-		M_{3}=
+		DS=
 	  \begin{matrix}
 		& ODC & PPDA & SG\\
    		ODC & 1 & 1 & \frac{1}{2} \\
@@ -299,7 +299,7 @@
 	\item \textbf{S} is a diagonal matrix, and the $i$-elements of it are defined to be the sum of the $i$th player's passes.
 	\end{itemize}
 
-	Those networks with higher  $\lambda_{2}$ usually do not need a long time to synchronize. Besides, those networks always reach equilibrium faster in difussion processes.  If we consider these factors in football games, we will find that those teams whose networks have higher $\lambda_{2}$ will be able to cover the court more quickly, and they are also more interconnected.  Therefore, we will choose $\lambda_{2}$ to be the coordination score of the football passing network.
+	Those networks with higher  $\lambda_{2}$ usually do not need a long time to synchronize. Besides, those networks always reach equilibrium faster in difussion processes.  If we consider these factors in football games, we will find that those teams whose networks have higher $\lambda_{2}$ will be able to cover the court more quickly, and they are also more interconnected.  Therefore, we will choose $\lambda_{2}$ to be the coordination score $CS$ of the football passing network.
 \subsubsection{Robustness Score}
 	The robustness of a team's football passing network is also an important evaluation criterion for its level of teamwork.  If the team is united internally, the robustness of its football passing network will be improved, so that the passing network can function normally when it is impacted by the opponent team.  To measure the robustness of Huskies' football passing network, we will use the clustering coefficient $C$ and the largest eigenvalue $\lambda_{1}$ of the football passing matrix $\textbf{A}$ to investigate it.  
 
@@ -320,7 +320,7 @@
 
 	As for the largest eigenvalue $\lambda_{1}$ of the football passing matrix $\textbf{A}$, it is acknowledged that $\lambda_{1}$ will increase if the number of the nodes and links in the football passing network grows.  Therefore, $\lambda_{1}$ can also serve as an indicator of the robustness of the football passing network.
 
-	In summary, we define robustness score $RB$ as $RB = 0.5C + 0.5\lambda_{1}$, which will maintain both strengths.
+	In summary, we define robustness score $RS$ as $RS = 0.5C + 0.5\lambda_{1}$, which will maintain both strengths.
 \subsubsection{Flexibility Score}
 	We define the "topological distance" between two nodes in the network as the inverse of the weight of the edge that connects the two nodes. Hence it is obvious that the smaller the topological distance, the easier to pass through that edge, which means the flexibility of the network is better. 
 	
@@ -333,7 +333,9 @@
 		\item 	$p_{ij}$ is the shortest topological path between node $i$ and node $j$.
 	\end{itemize}
 
-	In summary, we choose the inverse of the average shortest path $\frac{1}{d}$ to be the score of flexibility.
+	In summary, we choose the inverse of the average shortest path $\frac{1}{d}$ to be the score of flexibility $FS$.
+\subsubsection{Teamwork Score}
+	Now we have got five scores of different indicators of teamwork. So we will combine these five scores into one representative score next.  We first normalize all scores.
 \section{Implementation}
 	In this section, we will analyze network patterns and teamwork indicators of Huskies' football passing network by studying the data given in problem. 
 \subsection{Network Patterns}
