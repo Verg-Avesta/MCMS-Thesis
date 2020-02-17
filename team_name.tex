@@ -174,15 +174,15 @@
 	\begin{enumerate}
 	\item The Performance of the Attacker
 	
-	The offense on the football field is nothing more than passing and shooting. Apart from cases that the player can shoot alone because of excellent personal strength, good offense should be the result of successful teamwork.  Therefore, the number of passes should be the main consideration. Pass is divided into simple pass, smart pass, head pass, high pass and hand pass. And the main ones that appear in the offense are simple pass and smart pass. Head pass and high pass will only appear in specific situations, so they are not considered here.
+	\qquad The offense on the football field is nothing more than passing and shooting. Apart from cases that the player can shoot alone because of excellent personal strength, good offense should be the result of successful teamwork.  Therefore, the number of passes should be the main consideration. Pass is divided into simple pass, smart pass, head pass, high pass and hand pass. And the main ones that appear in the offense are simple pass and smart pass. Head pass and high pass will only appear in specific situations, so they are not considered here.
 
-	At the same time, the ball possession rate in the opponent's penalty area is also an important indicator of the aggressiveness of the offense. As the defender's last area, the penalty area is unquestionably strong.  Defensively, every striker will be pressed by at least one person.  And there will even be double-jacketing and multiple-jacketing situations.Therefore, the statistics of the ball control rate here is of great significance. It can comprehensively reflect the quality of tactics.Good tactics should be those the team can still control the ball in the face of high-intensity defense.
+	\qquad At the same time, the ball possession rate in the opponent's penalty area is also an important indicator of the aggressiveness of the offense. As the defender's last area, the penalty area is unquestionably strong.  Defensively, every striker will be pressed by at least one person.  And there will even be double-jacketing and multiple-jacketing situations.Therefore, the statistics of the ball control rate here is of great significance. It can comprehensively reflect the quality of tactics.Good tactics should be those the team can still control the ball in the face of high-intensity defense.
 
-	And for the opponent will defend for each attack, the perfect attack should be that pass more to minimize the confrontation, so the number of confrontations in each attack should also be considered.  Note that each confrontation in the event table occurs in pairs: ground attacking duel and ground defending duel.  Therefore, this pair is directly referred to as ground duel in our analysis.  But in the event statistics, as long as the offensive and defensive opponents face each other, the situation is counted as ground duel.  Hence the events after the ground duel should be counted. The general choice is to quickly pass the ball to others or choose to pass the ball by himselt with extraodinary skills, so these two indicators should be considered together.
+	\qquad And for the opponent will defend for each attack, the perfect attack should be that pass more to minimize the confrontation, so the number of confrontations in each attack should also be considered.  Note that each confrontation in the event table occurs in pairs: ground attacking duel and ground defending duel.  Therefore, this pair is directly referred to as ground duel in our analysis.  But in the event statistics, as long as the offensive and defensive opponents face each other, the situation is counted as ground duel.  Hence the events after the ground duel should be counted. The general choice is to quickly pass the ball to others or choose to pass the ball by himselt with extraodinary skills, so these two indicators should be considered together.
 
-	Then good tactics also have the option of making fouls. Making fouls in the penalty area can earn a free kick. At this time, the foul is really worth a thousand dollars, so we will also count the number of fouls in each attack.
+	\qquad Then good tactics also have the option of making fouls. Making fouls in the penalty area can earn a free kick. At this time, the foul is really worth a thousand dollars, so we will also count the number of fouls in each attack.
 	
-	Based on this, the quantitative indicators are as follows:
+	\qquad Based on this, the quantitative indicators are as follows:
 	
 	\begin{itemize}
 		\item $\eta$ is the football possession time ratio;
@@ -193,7 +193,7 @@
 		\item $n_{3}$ is the number of free kicks after making the opponent foul.
 	\end{itemize}
 
-	The corresponding judgment matrix is:
+	\qquad The corresponding judgment matrix is:
 	\begin{equation}\label{mat:1}
 		M_{1}=
  	\begin{matrix}
@@ -210,7 +210,7 @@
 	
 	\item The Performance of the Defender
 	
-	The quality of an offense can also be judged from the other side, that is, the performance of the defensive end. The execution of an offensive tactic in place should theoretically fly the ball towards the goal and no opponent player blocks it.  At this time, the opponent team can only rely on the goalkeeper's response to try a save attempt.  Therefore, the defensive save attempt can also judge the quality of an offensive tactic.
+	\qquad The quality of an offense can also be judged from the other side, that is, the performance of the defensive end. The execution of an offensive tactic in place should theoretically fly the ball towards the goal and no opponent player blocks it.  At this time, the opponent team can only rely on the goalkeeper's response to try a save attempt.  Therefore, the defensive save attempt can also judge the quality of an offensive tactic.
 
 	\begin{itemize}
 		\item $d$ is the number of the opponent's save attempts.
@@ -218,13 +218,14 @@
 
 	\item Special Situations
 	
-	In some special cases, the tactics are just the front pavement. At that time, whether the goal can be achieved depends on the player ’s personal play and a certain degree of luck. In that case, it is usually a long corner kick, cross to the penalty area and rely on the player's aerial confrontation to pass the header, or run to the ball in advance to grab the ball and successfully shoot. In these cases, the tactics generally only prepare the first half, so it should be considered.
+	\qquad In some special cases, the tactics are just the front pavement. At that time, whether the goal can be achieved depends on the player ’s personal play and a certain degree of luck. In that case, it is usually a long corner kick, cross to the penalty area and rely on the player's aerial confrontation to pass the header, or run to the ball in advance to grab the ball and successfully shoot. In these cases, the tactics generally only prepare the first half, so it should be considered.
 
 	\begin{itemize}
 		\item $f$ is the number of shots right after crossing to the penalty area or right after corner.
 	\end{itemize}
 
 	\end{enumerate}
+	
 	The offensive tactics are scored by analyzing \textbf{the overall performance of the attacker, the performance of the defender, and the special situation}.The corresponding judgment matrix is:
 
 	\begin{equation}\label{mat:2}
@@ -238,13 +239,13 @@
 	\end{equation}
 	
 \subsubsection{Defensive Score}
-	For the event table cannot reflect the occupancy of each defensive player, there is no way to know which defensive strategy is actually used. Therefore we can only start from the event-driven and consider the location of each event to establish our model.
+	\qquad For the event table cannot reflect the occupancy of each defensive player, there is no way to know which defensive strategy is actually used. Therefore we can only start from the event-driven and consider the location of each event to establish our model.
 	\begin{enumerate}
 	\item ODC
 	
-	ODC refers to the number of opponent's successful passes within 20 yards of Huskies' bottom line. This area is the core defense area and the last defense area for each team.  By judging the number of successful passes by the opponent within 20 yards of the bottom line, it can clearly reflect the level of the team's defensive level from the side, and it can also reflect the level of the team's defensive tactics. Good defensive tactics will make it impossible for the enemy players to find a point to cope with, which means that the number of successful passes will be reduced.
+	\qquad ODC refers to the number of opponent's successful passes within 20 yards of Huskies' bottom line. This area is the core defense area and the last defense area for each team.  By judging the number of successful passes by the opponent within 20 yards of the bottom line, it can clearly reflect the level of the team's defensive level from the side, and it can also reflect the level of the team's defensive tactics. Good defensive tactics will make it impossible for the enemy players to find a point to cope with, which means that the number of successful passes will be reduced.
 
-	Therefore, the smaller the ODC value, the better the defensive effect of this game. Limiting the opponent's offense can indicate that the defensive quality is great, and the frequency of threats to the defensive area of ​​this team's own side is low.
+	\qquad Therefore, the smaller the ODC value, the better the defensive effect of this game. Limiting the opponent's offense can indicate that the defensive quality is great, and the frequency of threats to the defensive area of ​​this team's own side is low.
 
 	\begin{itemize}
 		\item $ODC$ is the number of successful passes within 20 yards of this team's own baseline.
@@ -252,11 +253,11 @@
 
 	\item PPDA
 	
-	In PPDA, defensive actions are defined in the following four areas: steals, interceptions, confrontations, and fouls.  In this indicator, we only consider the pressure exerted by the player when defending against the opponent, and not care about other issues.
+	\qquad In PPDA, defensive actions are defined in the following four areas: steals, interceptions, confrontations, and fouls.  In this indicator, we only consider the pressure exerted by the player when defending against the opponent, and not care about other issues.
 
-	The smaller the value of PPDA, it means that the team's defensive strength is higher, and this also shows from a side that in this particular area, the chances of the offensive team wanting to use the pass to tear the defensive team's defense line are relatively small.
+	\qquad The smaller the value of PPDA, it means that the team's defensive strength is higher, and this also shows from a side that in this particular area, the chances of the offensive team wanting to use the pass to tear the defensive team's defense line are relatively small.
 
-	Of course, it is impossible for any team that adopts pressure defense to adopt such a strategy throughout the entire game. Most of the time, pressure defense has a trigger point, such as a player entering a specific area (this is also called trigger switch).  However, if all these factors are taken into account, the project volume will be quite huge, and some artificial subjective factors will be mixed into it.  Therefore, in the "defense strength" indicator, we will only provide an objective data, which is measured by all the defensive actions and the number of passes of the two sides in a specific area.
+	\qquad Of course, it is impossible for any team that adopts pressure defense to adopt such a strategy throughout the entire game. Most of the time, pressure defense has a trigger point, such as a player entering a specific area (this is also called trigger switch).  However, if all these factors are taken into account, the project volume will be quite huge, and some artificial subjective factors will be mixed into it.  Therefore, in the "defense strength" indicator, we will only provide an objective data, which is measured by all the defensive actions and the number of passes of the two sides in a specific area.
 
 	\begin{itemize}
 		\item $PPDA$ is total number of offensive passes $\div$ total number of defensive moves by the defending team.
@@ -264,12 +265,13 @@
 
 	\item The opponent's Shot/Goal
 	
-	From the macro level, measuring the defensive strength of a team will undoubtedly start from the number of broken goals.  However, the number of shots alone is not statistically significant. Therefore, the total number of shots of the enemy should also be counted. The shot / goal ratio is more general. It represents how many shots are required for each shot. The greater the number,  It means that the stronger the defense, the more difficult it is for enemy players to find good shots, and the stronger the defense of our players.
+	\qquad From the macro level, measuring the defensive strength of a team will undoubtedly start from the number of broken goals.  However, the number of shots alone is not statistically significant. Therefore, the total number of shots of the enemy should also be counted. The shot / goal ratio is more general. It represents how many shots are required for each shot. The greater the number,  It means that the stronger the defense, the more difficult it is for enemy players to find good shots, and the stronger the defense of our players.
 
 	\begin{itemize}
 		\item $SG$ is the number of opponent's shot $\div$ the number of opponent's goal.
 	\end{itemize}
 	\end{enumerate}
+	
 	The defensive tactics should be scored through the overall analysis of \textbf{ODC, PPDA, and SG}.The corresponding judgment matrix is:
 
 	\begin{equation}\label{mat:3}
@@ -283,13 +285,14 @@
 	\end{equation}
 
 \subsubsection{Coordination Score}
-	We believe that the better the coordination of a team, the more closely the football passing network it corresponds to.  Therefore, we will investigate the algebraic connectivity of this network, which is measured by the second smallest eigenvalue $\lambda_{2}$ of the Laplacian matrix $\textbf{L}$~\cite{First}.
+	 We believe that the better the coordination of a team, the more closely the football passing network it corresponds to.  Therefore, we will investigate the algebraic connectivity of this network, which is measured by the second smallest eigenvalue $\lambda_{2}$ of the Laplacian matrix $\textbf{L}$~\cite{First}.
 
 	The Laplacian matrix $\textbf{L}$ is defined as $\textbf{L}=\textbf{S}-\textbf{A}$,where:
 	\begin{itemize}
 	\item \textbf{A} is the weighted adjacency matrix of the football passing network.
 	\item \textbf{S} is a diagonal matrix, and the $i$-elements of it are defined to be the sum of the $i$th player's passes.
 	\end{itemize}
+
 	Those networks with higher  $\lambda_{2}$ usually do not need a long time to synchronize. Besides, those networks always reach equilibrium faster in difussion processes.  If we consider these factors in football games, we will find that those teams whose networks have higher $\lambda_{2}$ will be able to cover the court more quickly, and they are also more interconnected.  Therefore, we will choose $\lambda_{2}$ to be the coordination score of the football passing network.
 \subsubsection{Robustness Score}
 	To measure the robustness of Huskies' football passing network, we will use 
