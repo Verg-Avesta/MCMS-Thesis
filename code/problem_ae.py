@@ -39,7 +39,6 @@ class AutoEncoder(nn.Module):
         return decoded
 
 
-# 超参数
 EPOCH = 1000
 BATCH_SIZE = 64
 LR = 0.005

@@ -41,7 +41,7 @@ class Generator(nn.Module):
 
     def forward(self, x):
         x = self.fc(x)
-        x = x.view(x.shape[0], 64, 7, 7)  # reshape 通道是 128，大小是 7x7
+        x = x.view(x.shape[0], 64, 7, 7)  
         x = self.conv(x)
         return x
 
@@ -106,24 +106,20 @@ loss_func = nn.BCEWithLogitsLoss()
 for epoch in range(EPOCH):
     G.train()
     for step, (batchx,) in enumerate(train_loader):
-        # 创造灵感
+     
         IDEA = (torch.rand(batchx.size(0), IDEA_NUM).cuda()-0.5)/0.5
-
-        # 开始作画
+       
         shit_paintings = G(IDEA)
 
-        # 开始评测
         score_good = D(batchx.cuda())
         score_shit = D(shit_paintings)
 
-        # 计算损失函数
         good_label = torch.ones(batchx.size(0), 1).cuda()
         shit_label = torch.zeros(batchx.size(0), 1).cuda()
         loss_D = loss_func(score_good, good_label) + \
             loss_func(score_shit, shit_label)
         loss_G = loss_func(score_shit, good_label)
 
-        # 反向传播
         optimizer_D.zero_grad()
         loss_D.backward(retain_graph=True)
         optimizer_D.step()
@@ -141,7 +137,7 @@ for epoch in range(EPOCH):
         newIDEA = (torch.rand(BATCH_SIZE, IDEA_NUM).cuda()-0.5)/0.5
         shit_paintings = (G(newIDEA).squeeze()
                           ).data.cpu().view(-1, 28, 28).numpy()
-        # 绘制多个图像
+        
         for i in range(1, 17):
             plt.subplot(4, 4, i)
             ret, cur_plt = cv2.threshold(
