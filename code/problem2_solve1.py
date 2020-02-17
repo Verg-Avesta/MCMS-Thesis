@@ -165,7 +165,8 @@ while matchid <= 38:
 
         # Shot, analyze the actions before and after it.
         event_before = action_list[eventid -
-                                   21: eventid] if eventid - 21 >= 0 else action_list[:eventid]
+                                   21: eventid] \
+            if eventid - 21 >= 0 else action_list[:eventid]
 
         event_after = action_list[eventid +
                                   1] if eventid + 1 < len(action_list) else None
