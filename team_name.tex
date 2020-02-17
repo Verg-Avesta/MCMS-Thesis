@@ -107,6 +107,7 @@
 				$\lambda_{1}$ & the largest eigenvalue of the football passing matrix\\
 				$\lambda_{2}$ & The second smallest eigenvalue of the Laplacian matrix\\
 				$C$ & The clustering coefficient\\
+				$d$ & The average shortest path\\
 			\hline
    	 	\end{tabular}
 	\end{table}
@@ -318,6 +319,18 @@
 
 	In summary, we define robustness score $RB$ as $RB = 0.5C + 0.5\lambda_{1}$, which will maintain both strengths.
 \subsubsection{Flexibility Score}
+	We define the "topological distance" between two nodes in the network as the inverse of the weight of the edge that connects the two nodes. Hence it is obvious that the smaller the topological distance, the easier to pass through that edge, which means the flexibility of the network is better. 
+	
+	Therefore, the average shortest path is defined as the average of the shortest topological path between all pairs of players in the network :
+	\begin{equation}\label{eq:d}
+		d = \frac{1}{N(N-1)} \sum_{i,j_{i \ne j}}p_{ij}
+	\end{equation}
+	where:
+	\begin{itemize}
+		\item 	$p_{ij}$ is the shortest topological path between node $i$ and node $j$.
+	\end{itemize}
+
+	In summary, we choose the inverse of the average shortest path $\frac{1}{d}$ to be the score of flexibility.
 \section{Implementation}
 	In this section, we will analyze network patterns and teamwork indicators of Huskies' football passing network by studying the data given in problem. 
 \subsection{Network Patterns}
